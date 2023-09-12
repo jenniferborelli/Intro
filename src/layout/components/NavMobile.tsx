@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import {
   Container,
   Divider,
@@ -50,7 +51,9 @@ const NavMobile = ({
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">
+            <NotificationsActiveIcon />
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
