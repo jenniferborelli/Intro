@@ -4,6 +4,9 @@ import {
   Container,
   Typography,
   useMediaQuery,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
 } from "@mui/material";
 
 const MainSection = () => {
@@ -18,79 +21,86 @@ const MainSection = () => {
         background: "none",
       }}
     >
-      <Box
-        display={"grid"}
-        gridTemplateColumns={{
-          xs: "1fr",
-          sm: "1fr 1fr",
-        }}
-        gridTemplateRows="auto"
-        gridTemplateAreas={{
-          xs: "'.' '.' 'title' 'subtitle' 'btn'",
-          sm: "'. img' 'title img' 'subtitle img' 'btn img' '. img'",
-        }}
-        columnGap={{
-          xs: 0,
-          sm: 2,
-        }}
-        height={{
-          xs: "92vh",
-        }}
-      >
-        <Box
-          gridArea={"title"}
-          alignSelf={{
-            xs: "end",
-            sm: "end",
-          }}
-          textAlign={{
-            xs: "center",
-            sm: "left",
-          }}
-        >
-          <Typography variant={sm ? "h2" : "h3"} fontWeight="bold">
-            {title}
-          </Typography>
-        </Box>
-        <Box
-          textAlign={{
-            xs: "center",
-            sm: "left",
-          }}
-          gridArea={"subtitle"}
-          alignSelf={{
-            xs: "center",
-          }}
-        >
-          <Typography variant="h5">{subtitle}</Typography>
-        </Box>
-        <Box
-          gridArea={"btn"}
-          alignSelf={{
-            xs: "start",
-            sm: "start",
-          }}
-          display={"flex"}
-          justifySelf={{
-            xs: "center",
-            sm: "left",
-          }}
-        >
-          <Button variant="contained">Comienza a crear</Button>
-        </Box>
-
-        <Box
-          gridArea={"img"}
-          sx={{
-            backgroundImage: `url("https://picsum.photos/1200/800")`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-      </Box>
+      <ImageList>
+        {itemData.map((item) => (
+          <ImageListItem key={item.img}>
+            <img
+              src={`${item.img}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading="lazy"
+            />
+            <ImageListItemBar
+              title={item.title}
+              subtitle={<span>by: {item.author}</span>}
+              position="below"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
     </Container>
   );
 };
-
+const itemData = [
+  {
+    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+    title: "Breakfast",
+    author: "@bkristastucchio",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    title: "Burger",
+    author: "@rollelflex_graphy726",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    title: "Camera",
+    author: "@helloimnik",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    title: "Coffee",
+    author: "@nolanissac",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
+    title: "Hats",
+    author: "@hjrc33",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
+    title: "Honey",
+    author: "@arwinneil",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
+    title: "Basketball",
+    author: "@tjdragotta",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
+    title: "Fern",
+    author: "@katie_wasserman",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
+    title: "Mushrooms",
+    author: "@silverdalex",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
+    title: "Tomato basil",
+    author: "@shelleypauls",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
+    title: "Sea star",
+    author: "@peterlaster",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
+    title: "Bike",
+    author: "@southside_customs",
+  },
+];
 export default MainSection;

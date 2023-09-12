@@ -9,6 +9,7 @@ import {
   Link,
   Menu,
   MenuItem,
+  Button,
   Typography,
 } from "@mui/material";
 import { ReactNode, useState } from "react";
@@ -35,60 +36,22 @@ const NavMobile = ({
   return (
     <Box height="100%" width="100%">
       <Container sx={{ height: "8vh" }} />
-      <AppBar position="fixed">
-        <Toolbar sx={{ backgroundColor: "var(--color-primario)" }}>
-          <Link href="/" flexGrow={1} underline="none" color="inherit">
-            <NavLogo />
-          </Link>
+      <AppBar position="static">
+        <Toolbar>
           <IconButton
             size="large"
             edge="start"
+            color="inherit"
             aria-label="menu"
-            sx={{ color: "white" }}
-            onClick={handleClick}
+            sx={{ mr: 2 }}
           >
-            <MenuIcon color="inherit" />
+            <MenuIcon />
           </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
         </Toolbar>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
-        >
-          {linksLeft.map((link, index) => (
-            <MenuItem
-              key={index}
-              onClick={handleClose}
-              component={Link}
-              href={link.href}
-              underline="none"
-            >
-              {link.icon}
-              <Typography variant="inherit" sx={{ ml: 1 }}>
-                {link.label}
-              </Typography>
-            </MenuItem>
-          ))}
-          <Divider variant="middle" />
-          {linksRight.map((link, index) => (
-            <MenuItem
-              key={index}
-              onClick={handleClose}
-              component={Link}
-              href={link.href}
-              underline="none"
-            >
-              {link.icon}
-              <Typography variant="inherit" sx={{ ml: 1 }}>
-                {link.label}
-              </Typography>
-            </MenuItem>
-          ))}
-        </Menu>
       </AppBar>
     </Box>
   );
