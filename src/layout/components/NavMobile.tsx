@@ -37,7 +37,7 @@ const NavMobile = ({
   return (
     <Box height="100%" width="100%">
       <Container sx={{ height: "8vh" }} />
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             size="large"

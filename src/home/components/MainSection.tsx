@@ -6,8 +6,10 @@ import {
   useMediaQuery,
   ImageList,
   ImageListItem,
+  IconButton,
   ImageListItemBar,
 } from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const MainSection = () => {
   const title = "Vos queres crecer.\n Nosotros te queremos ayudar";
@@ -32,8 +34,15 @@ const MainSection = () => {
             />
             <ImageListItemBar
               title={item.title}
-              subtitle={<span>by: {item.author}</span>}
               position="below"
+              actionIcon={
+                <IconButton
+                  sx={{ color: "rgba(0, 0, 0, 1)" }}
+                  aria-label={`info about ${item.title}`}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+              }
             />
           </ImageListItem>
         ))}
