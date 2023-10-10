@@ -1,80 +1,62 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
 import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import {
-  CardActionArea,
-  List,
-  ListSubheader,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  DraftsIcon,
-  SendIcon,
-  handleClick,
-  InboxIcon,
-  open,
-  ExpandLess,
-  ExpandMore,
-} from "@mui/material";
-
-export default function RoomCard() {
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+export default function BasicList() {
   return (
-    <Card sx={{ marginTop: 4 }}>
-      <CardActionArea>
+    <>
+      <Button size="small">Stock </Button>
+      <Button size="small">Sin Stock </Button>
+      <Card sx={{ maxWidth: 345 }}>
         <CardMedia
-          component="img"
-          height="140"
+          sx={{ height: 140 }}
           image="https://source.unsplash.com/200x200/?kitchen"
-          alt="green iguana"
+          title="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Cocina
           </Typography>
-          <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-                Nested List Items
-              </ListSubheader>
-            }
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <SendIcon />
-              </ListItemIcon>
-              <ListItemText primary="Sent mail" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemIcon>
-                <DraftsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Drafts" />
-            </ListItemButton>
-            <ListItemButton onClick={handleClick}>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Inbox" />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemIcon>
-                    <StarBorder />
-                  </ListItemIcon>
-                  <ListItemText primary="Starred" />
-                </ListItemButton>
-              </List>
-            </Collapse>
-          </List>
+          <Typography variant="body2" color="text.secondary"></Typography>
         </CardContent>
-      </CardActionArea>
-    </Card>
+        <CardActions></CardActions>
+      </Card>
+      <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+        <nav aria-label="main mailbox folders">
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <FavoriteBorderIcon>
+                  <InboxIcon />
+                </FavoriteBorderIcon>
+
+                <ListItemText primary="Tomate " />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <FavoriteBorderIcon>
+                  <DraftsIcon />
+                </FavoriteBorderIcon>
+                <ListItemText primary="Papa " />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </nav>
+      </Box>
+    </>
   );
 }
