@@ -49,3 +49,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </Fragment>
   );
 }
+<QueryProvider>
+  <Layout>
+    <Component {...pageProps} />
+  </Layout>
+</QueryProvider>;
