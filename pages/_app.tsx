@@ -4,8 +4,10 @@ import { AppProps } from "next/app";
 import Theme from "@/src/theme/Theme";
 import Layout from "@/src/layout/Layout";
 import { Fragment } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
   return (
     <Fragment>
       <Head>
@@ -42,15 +44,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/site.webmanifest"></link>
       </Head>
       <Theme>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
       </Theme>
     </Fragment>
   );
 }
-<QueryProvider>
-  <Layout>
-    <Component {...pageProps} />
-  </Layout>
-</QueryProvider>;
